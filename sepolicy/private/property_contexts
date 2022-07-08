@@ -11,3 +11,5 @@ persist.sys.log.awb                 u:object_r:exported_system_prop:s0
 
 # Version
 ro.separate.soft    u:object_r:system_oplus_project_prop:s0
+
+ro.product.marketname          u:object_r:build_prop:s0

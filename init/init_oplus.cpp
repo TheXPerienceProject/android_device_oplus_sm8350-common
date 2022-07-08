@@ -27,6 +27,30 @@ void OverrideProperty(const char* name, const char* value) {
     }
 }
 
+void set_ro_build_prop(const string &source, const string &prop,
+                       const string &value, bool product = true) {
+    string prop_name;
+
+    if (product)
+        prop_name = "ro.product." + source + prop;
+    else
+        prop_name = "ro." + source + "build." + prop;
+
+    OverrideProperty(prop_name.c_str(), value.c_str());
+}
+
+void set_device_props(const string model, const string name, const string marketname) {
+    // list of partitions to override props
+    string source_partitions[] = { "", "bootimage.", "odm.", "product.",
+                                   "system.", "system_ext.", "vendor." };
+
+    for (const string &source : source_partitions) {
+        set_ro_build_prop(source, "model", model);
+        set_ro_build_prop(source, "name", name);
+        set_ro_build_prop(source, "marketname", marketname);
+    }
+}
+
 /*
  * Only for read-only properties. Properties that can be wrote to more
  * than once should be set in a typical init script (e.g. init.oplus.hw.rc)
@@ -39,7 +63,7 @@ void vendor_load_properties() {
     switch (rf_version) {
         case 2: // EU
             if (device == "RMX3360") {
-                OverrideProperty("ro.product.product.model", "RMX3363");
+                set_device_props("RMX3363", "RMX3360", "Realme GT Master Edition");
             }
             break;    
         case 11: // CN
