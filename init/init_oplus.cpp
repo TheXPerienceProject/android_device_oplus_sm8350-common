@@ -10,6 +10,7 @@
 #include <sys/_system_properties.h>
 
 using android::base::GetProperty;
+using std::string;
 
 /*
  * SetProperty does not allow updating read only properties and as a result
