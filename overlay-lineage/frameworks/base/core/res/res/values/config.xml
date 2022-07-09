@@ -2,6 +2,7 @@
 <!--
      Copyright (C) 2015-2016 The CyanogenMod Project
                    2017-2021 The LineageOS Project
+				   2022 The XPerience Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
@@ -40,13 +41,5 @@
 
     <!-- Whether device has screen with higher aspect ratio -->
     <bool name="config_haveHigherAspectRatioScreen">true</bool>
-
-    <!-- Defines the actions shown in advanced reboot submenu -->
-    <string-array name="config_restartActionsList">
-        <item>restart</item>
-        <item>restart_recovery</item>
-        <item>restart_bootloader</item>
-        <item>restart_fastboot</item>
-     </string-array>
 
 </resources>
